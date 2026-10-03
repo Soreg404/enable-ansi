@@ -1,9 +1,9 @@
 [package]
 name = "enable-ansi"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
-
-[dependencies]
+description = "tiny helper function to enable virtual terminal processing (ansii colors) in build without cargo"
+license = "mit"
 
 [[bin]]
 name = "pretty_print"
