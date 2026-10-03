@@ -25,7 +25,7 @@ mod literal_winapi_types {
 
 /// winapi types translated to rust types 
 type HANDLE  = *const ();
-type DWORD   = u16;
+type DWORD   = u32;
 type BOOL    = i32;
 type LPDWORD = *const DWORD;
 
