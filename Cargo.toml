@@ -1,6 +1,6 @@
 [package]
 name = "enable-ansi"
-version = "0.1.5"
+version = "0.2.5"
 edition = "2024"
 description = "tiny helper function to enable virtual terminal processing (ansii colors) in build without cargo"
 license = "MIT"
