@@ -1,9 +1,10 @@
 [package]
 name = "enable-ansi"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2024"
 description = "tiny helper function to enable virtual terminal processing (ansii colors) in build without cargo"
 license = "MIT"
+repository = "https://github.com/Soreg404/enable-ansi.git"
 
 [[bin]]
 name = "pretty_print"
