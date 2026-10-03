@@ -1,5 +1,18 @@
 #![deny(warnings)]
 
+/// enables virtual terminal processing (ansi collored output)
+/// and returns old mode
+pub fn enable_ansi() -> DWORD {
+    let mut mode = 0;
+    unsafe {
+        let h = GetStdHandle(STD_OUTPUT_HANDLE);
+        if GetConsoleMode(h, &mut mode) != 0 {
+            SetConsoleMode(h, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+        }
+    }
+    mode
+}
+
 /// [Windows data types](https://learn.microsoft.com/pl-pl/windows/win32/winprog/windows-data-types)
 #[expect(dead_code)]
 mod literal_winapi_types {
@@ -33,17 +46,3 @@ const STD_OUTPUT_HANDLE: DWORD = (u32::MAX - 10) as DWORD;
 /// also, in Windows.h this is probably a #define so the `: DWORD` type is Rust specific.
 /// [^doc2]: <https://learn.microsoft.com/en-us/windows/console/setconsolemode>
 const ENABLE_VIRTUAL_TERMINAL_PROCESSING: DWORD = 0x4;
-
-/// enables virtual terminal processing (ansi collored output)
-/// and returns old mode
-pub fn enable_ansi() -> DWORD {
-    let mut mode = 0;
-    unsafe {
-        let h = GetStdHandle(STD_OUTPUT_HANDLE);
-        if GetConsoleMode(h, &mut mode) != 0 {
-            SetConsoleMode(h, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-        }
-    }
-    mode
-}
-
